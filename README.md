@@ -1,6 +1,8 @@
 
 ---
 
+[![Docker Image CI](https://github.com/ModularMinds/uauthx/actions/workflows/docker-image.yml/badge.svg)](https://github.com/ModularMinds/uauthx/actions/workflows/docker-image.yml)
+
 # UAuthX - User Authentication System
 
 UAuthX is a user authentication system built with Node.js and MongoDB. It provides a secure and efficient way to manage user authentication for web applications.
