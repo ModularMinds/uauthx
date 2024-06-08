@@ -22,19 +22,18 @@ UAuthX is a user authentication system built with Node.js and MongoDB. It provid
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/UAuthX.git
+   git clone https://github.com/modularminds/uauthx.git
    ```
 
 2. Install dependencies:
    ```bash
-   cd UAuthX
+   cd uauthx
    npm install
    ```
 
 3. Set up environment variables:
    Create a `.env` file in the root directory and define the following variables:
    ```plaintext
-   PORT=5000
    MONGO_URI=mongodb://localhost:27017/uauthx
    SECRET_KEY=your_secret_key
    UAUTHX_ADMIN=your_username
@@ -63,7 +62,6 @@ UAuthX is a user authentication system built with Node.js and MongoDB. It provid
 2. Run the Docker container:
    ```bash
    docker run -p 5000:5000 \
-     -e PORT=5000 \
      -e MONGO_URI=mongodb://localhost:27017/uauthx \
      -e SECRET_KEY=your_secret_key \
      -e UAUTHX_ADMIN=your_username \
@@ -75,18 +73,17 @@ UAuthX is a user authentication system built with Node.js and MongoDB. It provid
 
 1. Pull the Docker image:
    ```bash
-   docker pull yourdockerhubusername/uauthx:latest
+   docker pull modularminds/uauthx:latest
    ```
 
 2. Run the Docker container:
    ```bash
    docker run -p 5000:5000 \
-     -e PORT=5000 \
      -e MONGO_URI=mongodb://localhost:27017/uauthx \
      -e SECRET_KEY=your_secret_key \
      -e UAUTHX_ADMIN=your_username \
      -e UAUTHX_PASSWORD=your_password \
-     -d yourdockerhubusername/uauthx:latest
+     -d modularminds/uauthx:latest
    ```
 
 ## Usage
