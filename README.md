@@ -185,23 +185,4 @@ To access protected routes, include the JWT token in the Authorization header of
 Authorization: Bearer your_jwt_token
 ```
 
-## Dependencies
-
-- Express.js - Web framework for Node.js
-- Mongoose - MongoDB object modeling tool
-- JSON Web Token (JWT) - Token-based authentication library
-- Bcrypt.js - Password hashing library
-
-## Contributing
-
-Contributions are welcome! Please follow the [Contributing Guidelines](CONTRIBUTING.md).
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-- Thanks to the developers of Express, Mongoose, JWT, and Bcrypt.js for their excellent libraries.
-
 ---
