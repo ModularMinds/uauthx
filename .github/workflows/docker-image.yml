@@ -28,5 +28,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/uauthx:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/uauthx:${{ github.sha }}
+            modularminds/uauthx:latest
