@@ -37,6 +37,8 @@ UAuthX is a user authentication system built with Node.js and MongoDB. It provid
    PORT=5000
    MONGO_URI=mongodb://localhost:27017/uauthx
    SECRET_KEY=your_secret_key
+   UAUTHX_ADMIN=your_username
+   UAUTHX_PASSWORD=your_password
    ```
 
 4. Build the application:
@@ -64,6 +66,8 @@ UAuthX is a user authentication system built with Node.js and MongoDB. It provid
      -e PORT=5000 \
      -e MONGO_URI=mongodb://localhost:27017/uauthx \
      -e SECRET_KEY=your_secret_key \
+     -e UAUTHX_ADMIN=your_username \
+     -e UAUTHX_PASSWORD=your_password \
      -d uauthx
    ```
 
@@ -80,6 +84,8 @@ UAuthX is a user authentication system built with Node.js and MongoDB. It provid
      -e PORT=5000 \
      -e MONGO_URI=mongodb://localhost:27017/uauthx \
      -e SECRET_KEY=your_secret_key \
+     -e UAUTHX_ADMIN=your_username \
+     -e UAUTHX_PASSWORD=your_password \
      -d yourdockerhubusername/uauthx:latest
    ```
 
