@@ -88,91 +88,11 @@ UAuthX is a user authentication system built with Node.js and MongoDB. It provid
 
 ## Usage
 
-### Register a User
-
-Send a POST request to `/auth/sign-up` with the following JSON body:
-
-```json
-{
-  "email": "user@example.com",
-  "password": "password123"
-}
-```
-
-#### Response
-
-- Success:
-  ```json
-  {
-    "isSuccess": true,
-    "authToken": "your_jwt_token"
-  }
-  ```
-
-- Error:
-  ```json
-  {
-    "isSuccess": false,
-    "error": "Error message"
-  }
-  ```
-
-### Login
-
-Send a POST request to `/auth/sign-in` with the following JSON body:
-
-```json
-{
-  "email": "user@example.com",
-  "password": "password123"
-}
-```
-
-#### Response
-
-- Success:
-  ```json
-  {
-    "isSuccess": true,
-    "authToken": "your_jwt_token"
-  }
-  ```
-
-- Error:
-  ```json
-  {
-    "isSuccess": false,
-    "error": "Error message"
-  }
-  ```
-
-### Verify User Token
-
-Send a GET request to `/auth/verify-user` with the Authorization header containing the Bearer token:
-
-```
-GET /auth/verify-user HTTP/1.1
-Host: localhost:5000
-Authorization: Bearer your_jwt_token
-```
-
-#### Response
-
-- Success:
-  ```json
-  {
-    "isSuccess": true,
-    "userId": "user_id_string"
-  }
-  ```
-
-- Error:
-  ```json
-  {
-    "isSuccess": false,
-    "error": "Error message"
-  }
-  ```
+| **Endpoint**           | **Request Type**        | **Request Body / Headers**                                                                         | **Success Response**                                                                                               | **Error Response**                                                                                                 |
+|------------------------|-------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| **Register a User**    | POST `/auth/sign-up`    | ```json { "email": "user@example.com", "password": "password123" } ```                               | ```json { "isSuccess": true, "authToken": "your_jwt_token" } ```                                                   | ```json { "isSuccess": false, "error": "Error message" } ```                                                       |
+| **Login**              | POST `/auth/sign-in`    | ```json { "email": "user@example.com", "password": "password123" } ```                               | ```json { "isSuccess": true, "authToken": "your_jwt_token" } ```                                                   | ```json { "isSuccess": false, "error": "Error message" } ```                                                       |
+| **Verify User Token**  | GET `/auth/verify-user` | Header: Authorization: Bearer your_jwt_token                                                        | ```json { "isSuccess": true, "userId": "user_id_string" } ```                                                      | ```json { "isSuccess": false, "error": "Error message" } ```                                                       |
 
 ### Access Protected Routes
 
@@ -180,6 +100,14 @@ To access protected routes, include the JWT token in the Authorization header of
 
 ```
 Authorization: Bearer your_jwt_token
+```
+
+### Access Admin Routes
+
+To access admin routes, use Basic Authentication with your admin username and password.
+
+```plaintext
+Authorization: Basic base64_encode(username:password)
 ```
 
 ---
