@@ -6,5 +6,7 @@ import { passwordHasher, verifyToken } from "../middlewares";
 export const authRouter = Router();
 
 authRouter.route("/sign-up").post(passwordHasher, signUp);
+
 authRouter.route("/sign-in").post(signIn);
+
 authRouter.route("/verify-user").get(verifyToken, verifyUser);
