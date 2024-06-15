@@ -12,7 +12,6 @@ UAuthX is a user authentication system built with Node.js and MongoDB. It provid
 - User registration with email and password
 - User login with email and password
 - Token-based authentication using JWT (JSON Web Tokens)
-- Password hashing for secure storage
 - Centralized management of user authentication
 - Scalable architecture
 
