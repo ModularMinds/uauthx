@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+
+  modularminds-uauthx-database:
+    image: mongo:latest
+    container_name: modularminds-uauthx-database
+    hostname: modularminds-uauthx-database
+    ports:
+      - ${MONGODB_EXPOSE_PORT}:27017
+    volumes:
+      - modularminds-uauthx-database:/data/db
+
+  modularminds-uauthx-authserver:
+    image: modularminds/uauthx:latest
+    container_name: modularminds-uauthx-authserver
+    hostname: modularminds-uauthx-authserver
+    ports:
+      - ${UAUTHX_EXPOSE_PORT}:5000
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      UAUTHX_ADMIN: ${UAUTHX_ADMIN}
+      UAUTHX_PASSWORD: ${UAUTHX_PASSWORD}
+    depends_on:
+      - modularminds-uauthx-database
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+
+networks:
+  default:
+    name: modularminds-uauthx-network
