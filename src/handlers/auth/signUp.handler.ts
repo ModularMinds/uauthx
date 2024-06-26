@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { User } from "../models";
+import { User } from "../../models";
 import { sign } from "jsonwebtoken";
 
 // Sign up request handler
@@ -8,6 +8,8 @@ export const signUp = async (
   res: Response
 ) => {
   try {
+    console.log("/auth/sign-up api called");
+
     // Checking if already the given email exists is database or not
     const userExists = await User.findOne({ email: req.body.email });
 
@@ -28,6 +30,7 @@ export const signUp = async (
     const authToken = sign(payload, process.env.SECRET_KEY!);
 
     return res.json({ isSuccess: true, authToken });
+
   } catch (error) {
     return res.status(500).json({ isSuccess: false, error });
   }
