@@ -21,12 +21,13 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       UAUTHX_ADMIN: ${UAUTHX_ADMIN}
       UAUTHX_PASSWORD: ${UAUTHX_PASSWORD}
+      MONGODB_URL: mongodb://modularminds-uauthx-database:${MONGODB_EXPOSE_PORT}/${MONGODB_NAME}
     depends_on:
       - modularminds-uauthx-database
     restart: unless-stopped
 
 volumes:
-  mongodb_data:
+  modularminds-uauthx-database:
 
 networks:
   default:
