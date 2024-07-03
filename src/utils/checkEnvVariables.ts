@@ -4,7 +4,7 @@ import { shutdownServer } from "./shutdownServer";
 const requiredEnvVariables = [
   "UAUTHX_ADMIN",
   "UAUTHX_PASSWORD",
-  "MONGO_URI",
+  "UAUTHX_PUBLIC_IP",
   "SECRET_KEY",
 ];
 
