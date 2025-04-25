@@ -6,7 +6,6 @@ import { rootRouter } from "./routers";
 import { connectToDatabase } from "./database";
 
 import { checkEnvVariables } from "./utils/checkEnvVariables";
-import { startSwagger } from "./utils/swagger";
 
 config();
 
@@ -14,8 +13,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
-startSwagger(app)
 
 app.use("/", rootRouter);
 
