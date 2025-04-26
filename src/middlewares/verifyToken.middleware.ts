@@ -21,10 +21,10 @@ export const verifyToken = (
     const authHeader = req.headers.authorization;
 
     // Throwing 401 error if authorization is not provided in headers
-    if (!authHeader)
-      return res
-        .status(401)
-        .json({ isSucess: false, message: "Token not provided" });
+    if (!authHeader) {
+      res.status(401).json({ isSucess: false, message: "Token not provided" });
+      return;
+    }
 
     // Trying to extract token from the bearer
     const authToken = authHeader.split(" ")[1];
@@ -34,6 +34,6 @@ export const verifyToken = (
 
     next();
   } catch (error) {
-    return res.status(500).json({ isSuccess: false, error });
+    res.status(500).json({ isSuccess: false, error });
   }
 };

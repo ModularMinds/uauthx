@@ -14,11 +14,13 @@ export const signUp = async (
     const userExists = await User.findOne({ email: req.body.email });
 
     // Throwing 409 Conflict error if the email is already found in database
-    if (userExists)
-      return res.status(409).json({
+    if (userExists) {
+      res.status(409).json({
         isSuccess: false,
         error: `User with email id - ${req.body.email} already exists`,
       });
+      return;
+    }
 
     // If email does not exists then storing it in database
     const createdUser = await User.create(req.body);
@@ -29,9 +31,8 @@ export const signUp = async (
     // Generating auth token
     const authToken = sign(payload, process.env.SECRET_KEY!);
 
-    return res.json({ isSuccess: true, authToken });
-
+    res.json({ isSuccess: true, authToken });
   } catch (error) {
-    return res.status(500).json({ isSuccess: false, error });
+    res.status(500).json({ isSuccess: false, error });
   }
 };

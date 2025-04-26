@@ -13,10 +13,12 @@ export const signIn = async (
     const userExist = await User.findOne({ email: req.body.email });
 
     // Throwing 404 not found error if user does not exist
-    if (!userExist)
-      return res
+    if (!userExist) {
+      res
         .status(404)
         .json({ isSuccess: false, error: "Invalid username or password" });
+      return;
+    }
 
     // Comparing the passwords
     const passwordMatched = await compare(
@@ -25,10 +27,12 @@ export const signIn = async (
     );
 
     // Throwing 401 error if passwords not match
-    if (!passwordMatched)
-      return res
+    if (!passwordMatched) {
+      res
         .status(401)
         .json({ status: false, message: "Invalid username or password" });
+      return;
+    }
 
     // Creating a payload
     const payload = { userId: userExist._id };
@@ -36,8 +40,8 @@ export const signIn = async (
     // Generating auth token
     const authToken = sign(payload, process.env.SECRET_KEY!);
 
-    return res.json({ isSuccess: true, authToken });
+    res.json({ isSuccess: true, authToken });
   } catch (error) {
-    return res.status(500).json({ isSuccess: false, error });
+    res.status(500).json({ isSuccess: false, error });
   }
 };
