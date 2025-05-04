@@ -11,7 +11,6 @@
     "build": "tsc -p ."
   },
   "dependencies": {
-    "@prisma/client": "^6.8.2",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
@@ -25,7 +24,6 @@
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.18",
     "nodemon": "^3.1.10",
-    "prisma": "^6.8.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
