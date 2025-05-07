@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { User } from "../../models";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
+import { prisma } from "../../database";
 
 // Sign in request handler
 export const signIn = async (
@@ -10,7 +10,9 @@ export const signIn = async (
 ) => {
   try {
     // Checking if the user with given email exists or not
-    const userExist = await User.findOne({ email: req.body.email });
+    const userExist = await prisma.user.findUnique({
+      where: { email: req.body.email },
+    });
 
     // Throwing 404 not found error if user does not exist
     if (!userExist) {

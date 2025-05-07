@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { User } from "../../models";
 import { sign } from "jsonwebtoken";
+import { prisma } from "../../database";
 
 // Sign up request handler
 export const signUp = async (
@@ -11,7 +11,9 @@ export const signUp = async (
     console.log("/auth/sign-up api called");
 
     // Checking if already the given email exists is database or not
-    const userExists = await User.findOne({ email: req.body.email });
+    const userExists = await prisma.findUnique({
+      where: { email: req.body.email },
+    });
 
     // Throwing 409 Conflict error if the email is already found in database
     if (userExists) {
@@ -23,7 +25,7 @@ export const signUp = async (
     }
 
     // If email does not exists then storing it in database
-    const createdUser = await User.create(req.body);
+    const createdUser = await prisma.user.create({ data: req.body });
 
     // Creating a payload
     const payload = { userId: createdUser._id };
